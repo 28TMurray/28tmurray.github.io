@@ -10,67 +10,82 @@
 
     <style>
         * {
-            background-color: #111111;
+            margin: 0;
+        }
+        .center *{
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%, 50%);
+        }
+        .bg {
+            min-width: 100%; 
+            min-height: 100%;
+            width: auto;
+            height: fit-content; 
+            z-index: -100;
+            background-size: cover;
+            overflow: hidden;
+        }
+        .logo {
+            image-rendering: crisp-edges;
+            min-width: 400px;
+            width: 60%;
         }
 
-        @keyframes bounce {
-            0% {
-                position: fixed;
-                bottom: 0;
-            }
-
-            100% {
-                position: fixed;
-                bottom: 50%;
-            }
+        #card {
+            image-rendering: crisp-edges;
+            min-width: 80px;
+            width: 12%;
+            transform:
+                translate(-50%, 50%)
+                rotateX(var(--rotateX))
+                rotateY(var(--rotateY));
         }
 
-        .center-col {
-            display: flex;
-            justify-content: ;
-            flex-direction: column;
-        }
-
-        .center div {
-            background-color: red;
-        }
-
-        .bounce-image {
-            border-style: solid;
-            border-width: 2px;
-            border-color: #7777ff;
-            box-shadow: 0 0 5px #6666ee;
-            padding: 0.5%;
-            animation-name: bounce;
-            animation-timing-function: ease-out;
-            animation-direction: alternate;
-            animation-duration: 1s;
-            animation-iteration-count: infinite;
-           
-        }
-        #bounce1 {
-            margin: 0 0 0 20%;
-            
-        }
-        
-        #name {
-            font-family: 'Stalinist One', serif;
-            font-style: italic;
-            position: sticky;
-            -webkit-text-stroke: 1px #7777ff;
-            text-shadow: 0 0 5px #6666ee;
-            z-index: 99;
-        }
     </style>
 </head>
 
 <body>
-    <flex class="center-col">
-        <h1 id="name">TUCKER MURRAY</h1>
-        <p>SAfjkofjkofjkfjk</p>
-    </flex>
-    
-    <img class="bounce-image" id="bounce1" src="./tucker_photo.png">
+    <div class="center">
+
+        <video class="bg" src="./assets/balatrobg.webm" autoplay loop></video>
+        
+        <img class="logo" src="./assets/balatro-logo.png">
+
+        <img id="card" src="./assets/tucker-joker.png" alt="">
+
+    </div>
 </body>
 
 </html>
+
+<script>
+    // This is the "Getting it to follow our mouse" part of this video https://youtu.be/Z-3tPXf9a7M?si=YcxWEcuWAiNjqCmD
+    const card = document.getElementById("card");
+
+    document.addEventListener("mousemove", (e) => {
+        rotateElement(e, card);
+    });
+
+    document.addEventListener("mouseout", () => {
+        card.style.setProperty("--rotateX", "0deg");
+        card.style.setProperty("--rotateY", "0deg");
+    });
+
+    function rotateElement(event, element) {
+        //get mouse position
+        const x = event.clientX;
+        const y = event.clientY;
+
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        const offsetX = ((x - centerX)  / centerX) * 15;
+        const offsetY = ((y- centerY) / centerY) * 30;
+
+        element.style.setProperty("--rotateX", offsetY * -1 + "deg");
+        element.style.setProperty("--rotateY", offsetX + "deg");
+
+    }
+</script>
