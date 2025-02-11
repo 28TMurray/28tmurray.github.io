@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My First W5ebsite</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Stalinist+One" rel="stylesheet">
-
     <style>
         * {
             margin: 0;
         }
-        .center *{
+        .center * {
             position: absolute;
             left: 50%;
             bottom: 50%;
@@ -28,15 +26,22 @@
             overflow: hidden;
         }
         .logo {
-            image-rendering: crisp-edges;
+            image-rendering: pixelated;
             min-width: 400px;
             width: 60%;
         }
 
-        #card {
-            image-rendering: crisp-edges;
+        #card-container {
+            min-width: 100px;
+            min-height: 150px;
+            width: 14vw;
+            height: 20vw
+        }
+
+        #card * {
             min-width: 80px;
-            width: 12%;
+            width: 12vw;
+            image-rendering: pixelated;
             transform:
                 translate(-50%, 50%)
                 rotateX(var(--rotateX))
@@ -48,12 +53,14 @@
 
 <body>
     <div class="center">
-
-        <video class="bg" src="./assets/balatrobg.webm" autoplay loop></video>
-        
+        <video class="bg" src="./assets/balatrobg.webm" autoplay loop muted></video>
+        <audio class="music" src="./assets/maintheme.ogg" autoplay loop></audio>
         <img class="logo" src="./assets/balatro-logo.png">
-
-        <img id="card" src="./assets/tucker-joker.png" alt="">
+        <div id="card-container">
+            <div id="card">
+                <img src="./assets/tucker-joker.png">
+            </div>
+        <div>
 
     </div>
 </body>
@@ -62,13 +69,14 @@
 
 <script>
     // This is the "Getting it to follow our mouse" part of this video https://youtu.be/Z-3tPXf9a7M?si=YcxWEcuWAiNjqCmD
+    const container = document.getElementById("card-container");
     const card = document.getElementById("card");
 
-    document.addEventListener("mousemove", (e) => {
+    container.addEventListener("mousemove", (e) => {
         rotateElement(e, card);
     });
 
-    document.addEventListener("mouseout", () => {
+    container.addEventListener("mouseout", () => {
         card.style.setProperty("--rotateX", "0deg");
         card.style.setProperty("--rotateY", "0deg");
     });
@@ -81,8 +89,8 @@
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
 
-        const offsetX = ((x - centerX)  / centerX) * 15;
-        const offsetY = ((y- centerY) / centerY) * 30;
+        const offsetX = ((x - centerX)  / centerX) * 80;
+        const offsetY = ((y- centerY) / centerY) * 50;
 
         element.style.setProperty("--rotateX", offsetY * -1 + "deg");
         element.style.setProperty("--rotateY", offsetX + "deg");
