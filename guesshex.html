@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Hex</title>
+    <link id="style" rel="stylesheet" href="css/main.css">
+    <link id="dark" rel="stylesheet" href="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        @keyframes background-idle {
+            0% {
+                background-color: #f00;
+            }
+
+            16.6% {
+                background-color: #ff0;
+            }
+
+            33.2% {
+                background-color: #0f0;
+            }
+
+            50% {
+                background-color: #0ff;
+            }
+
+            66.6% {
+                background-color: #00f;
+            }
+
+            83.3% {
+                background-color: #f0f;
+            }
+
+            100% {
+                background-color: #f00;
+            }
+        }
+
+        * {
+            margin: 0;
+        }
+
+        body {
+            animation: background-idle 20s linear infinite normal;
+        }
+
+        #gameButtons {
+            display: flex;
+            justify-content: center;
+        }
+
+        #content {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            margin-top: 15vh;
+        }
+
+        #content * {
+            margin-bottom: 15px;
+        }
+
+        #accuracyTextContainer {
+            height: 0;
+        }
+
+        #sliderContainer {
+            display: flex;
+            justify-content: space-between;
+
+            width: 150px
+        }
+
+        .sliders {
+            writing-mode: vertical-lr;
+            direction: rtl;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navBar">
+        <a title="Home" class="navLink" href="index.html">Home</a>
+        <a title="About" class="navLink" href="about.html">About</a>
+        <a title="Guess The Hex!" class="navLink" href="guesshex.html">Guess The Hex</a>
+        <a title="Get to School 6" class="navLink" href="game/gettoschool6/gettoschool6.html">Get to School 6</a>
+        <button id="modeToggleButton">
+            <img id="modeToggleIcon" src="img/moon.svg">
+        </button>
+    </div>
+
+    <div id="content">
+        <h1 class="uiText" id="textBox">Guess the Hex!</h1>
+        <div id="gameButtons">
+            <button id="startButton">Start</button>
+            <button id="submitButton" class="toggle" disabled>Submit</button>
+        </div>
+        <div id="sliderContainer">
+            <input type="range" min="0" max="255" class="sliders toggle" id="red" disabled>
+            <input type="range" min="0" max="255" class="sliders toggle" id="green" disabled>
+            <input type="range" min="0" max="255" class="sliders toggle" id="blue" disabled>
+        </div>
+        <h2 class="uiText" id="highScoreHeading">High Score: None</h2>
+        <div class="uiText" id="accuracyTextContainer"></div>
+    </div>
+</body>
+<script type="module">
+    import { parseCookie, getMaxAge } from "./js/parseCookie.js"
+    let cookie = parseCookie();
+    //elements
+    const content = document.getElementById("content");
+    const textBox = document.getElementById("textBox");
+    const startButton = document.getElementById("startButton");
+    const submitButton = document.getElementById("submitButton");
+    const sliders = document.getElementsByClassName("sliders");
+    const highScoreHeading = document.getElementById("highScoreHeading");
+    const accuracyTextContainer = document.getElementById("accuracyTextContainer"); //append <p> element showing accuracy whenever color is submitted
+    const toggleElements = document.getElementsByClassName("toggle"); //toggled on and off when startButton is pressed
+    const uiText = document.getElementsByClassName("uiText"); //toggled on and off when startButton is pressed
+    const red = document.getElementById("red");
+    const green = document.getElementById("green");
+    const blue = document.getElementById("blue");
+
+    //game constants
+    const startHTML = "Guess The Hex!"; //used for reset() 
+    const startAnimation = 'background-idle 20s linear infinite normal';
+    const maxAttempts = 3; //Starting attempts for guesses
+
+    //game variables
+    let highScore = parseFloat(cookie.get('highScore'));
+    let gameStarted = false;
+    let attempts = 1;
+    let currentColor = newColor();
+    let accuracies = [];
+
+    startButton.addEventListener('click', toggleGame)
+
+    setHighscore();
+
+    function toggleGame() {
+        if (gameStarted === false) {
+            startButton.innerText = "Quit";
+            disableToggleElements(false);
+            newGame();
+            gameStarted = true;
+        }
+        else {
+            startButton.innerText = "Start";
+            disableToggleElements(true);
+            setHighscore();
+            reset();
+            gameStarted = false;
+        }
+    }
+
+    function newGame() {
+        accuracyTextContainer.innerHTML = '';
+        currentColor = newColor();
+        textBox.innerHTML = colorToHex(...currentColor);
+        attempts = 1;
+        document.body.style.animation = 'none';
+        changeBG();
+    }
+    //returns an array with the components [red, green, blue]
+    function newColor() {
+        let components = [];
+        for (let i = 0; i < 3; i++) {
+            components.push(
+                Math.floor(Math.random() * (256))
+            );
+        }
+        return components;
+    }
+
+    submitButton.addEventListener('click', submitColor)
+    function submitColor() {
+        const accuracyParagraph = document.createElement("p");
+        const percentParagraph = document.createElement("p");
+
+        accuracyTextContainer.prepend(accuracyParagraph);
+
+        accuracyParagraph.setAttribute("class", "accuracy");
+
+        let componentsAccuracy = () => {
+            componentsAccuracy = [];
+            for (let i = 0; i < 3; i++) {
+                componentsAccuracy.push(getAccuracy(currentColor[i], sliders[i].value));
+            }
+            return componentsAccuracy;
+        }
+        let combinedAccuracy = sum(componentsAccuracy()) / componentsAccuracy.length;
+
+        accuracyParagraph.innerHTML = `Attempt ${attempts} Accuracy: ${combinedAccuracy.toFixed(2)}`;
+
+        accuracies.push(combinedAccuracy);
+
+        attempts += 1;
+
+        if (attempts > 3) {
+            toggleGame();
+        }
+    }
+
+    function getAccuracy(targetComponent, realComponent) {
+        return 100 - (Math.abs(targetComponent - realComponent) * (100 / 255));
+    }
+
+    for (let slider of sliders) { slider.addEventListener("input", changeBG); }
+    function changeBG() {
+        const rgbColor = `rgb(${red.value}, ${green.value}, ${blue.value})`;
+        document.body.style.backgroundColor = rgbColor;
+        for (let element of uiText) {
+            if (Math.max(red.value, blue.value, green.value) < 128) {
+                element.style.color = '#fff';
+            }
+            else {
+                element.style.color = '#000'
+            }
+        };
+    }
+
+    function colorToHex(r, g, b) {
+        return `#${stringToHex(r)}${stringToHex(g)}${stringToHex(b)}`
+    }
+
+    function stringToHex(stringNum) {
+        let num = parseInt(stringNum);
+        let hexString = num.toString(16);
+        if (num < 15) {
+            return "0" + hexString;
+        }
+        if (hexString.length == 1) {
+            return hexString + "0";
+        }
+        return hexString;
+    }
+
+    function disableToggleElements(disableBool) {
+        for (let element of toggleElements) {
+            element.disabled = disableBool;
+        }
+    }
+
+    function setHighscore() {
+        let bestScore = Math.max(...accuracies);
+        accuracies = [];
+        if (isFinite(bestScore) && (bestScore > highScore || isNaN(highScore))) {
+            highScore = bestScore;
+            highScoreHeading.innerHTML = `High Score: ${bestScore.toFixed(2)}`;
+            document.cookie = `highScore=${highScore}; max-age=${getMaxAge(90)}`;
+        }
+        if (isNaN(highScore) || typeof highScore !== 'number') {
+            highScoreHeading.innerHTML = 'High Score: None';
+        }
+        else {
+            highScoreHeading.innerHTML = `High Score: ${highScore.toFixed(2)}`;
+        }
+    }
+
+    function reset() {
+        textBox.innerHTML = startHTML;
+        content.style.backgroundColor = 'rgb(0, 0, 0, 0)';
+        document.body.style.animation = startAnimation;
+        for (let element of uiText) {
+            element.style.color = '#000';
+        }
+    }
+
+    function sum(array) {
+        return array.reduce(function (a, b) {
+            return a + b;
+        }, 0);
+    }
+
+</script>
+<script type="module" src="js/script.js"></script>
+
+</html>

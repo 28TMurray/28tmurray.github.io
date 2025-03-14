@@ -1,0 +1,97 @@
+#aboutContainer {
+    padding: 30px;
+}
+
+.mainHeading {
+    font-size: 4.5em;
+    margin-bottom: 20px;
+}
+
+.subheading{
+    font-size: 2.5em;
+    margin-top: 75px;
+    margin-bottom: 20px;
+}
+
+.picon {
+    height: 1em;
+}
+
+.contentText {
+    font-size: 1.5em;
+}
+
+.indent {
+    margin: 0 50px;
+}
+
+.programWidget {
+    display: flex;
+    margin-top: 15px;
+    padding: 15px;
+    height: 250px;
+    border-radius: 30px;
+    border: 5px solid #000;
+    background-color: #333;
+}
+
+.imageTextContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0 3%;
+    justify-content: space-around;
+}
+
+.imageTextContainer img{
+    width: 200px;
+}
+
+.imageTextContainer a, .imageTextContainer a:visited{
+    text-align: center;
+    text-decoration: underline;
+    color: #185ef5;
+    text-shadow: 0 0 3px black;
+    font-size: 1.2em;
+}
+
+.widgetContent {
+    padding: 20px;
+    width: 100%;
+    overflow: scroll;
+}
+.widgetContent h1 {
+    text-align: center;
+    margin-bottom: 3%;
+    font-size: 2.2em;
+}
+.widgetContent p, .widgetContent ul {
+    font-size: 1.5em;
+}
+
+.imageLinksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px 75px;
+}
+
+.imageLinkContainer {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+.imageLinkContainer p{
+    text-align: center;
+}
+
+.imageLink{
+    display: flex;
+    width: 200px;
+    height: 200px;
+}
+
+.imageLink:hover {
+    filter: blur(1px);
+}

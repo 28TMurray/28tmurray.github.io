@@ -1,99 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First W5ebsite</title>
-
-    <style>
-        * {
-            margin: 0;
-        }
-        .center * {
-            position: absolute;
-            left: 50%;
-            bottom: 50%;
-            transform: translate(-50%, 50%);
-        }
-        .bg {
-            min-width: 100%; 
-            min-height: 100%;
-            width: auto;
-            height: fit-content; 
-            z-index: -100;
-            background-size: cover;
-            overflow: hidden;
-        }
-        .logo {
-            image-rendering: pixelated;
-            min-width: 400px;
-            width: 60%;
-        }
-
-        #card-container {
-            min-width: 100px;
-            min-height: 150px;
-            width: 14vw;
-            height: 20vw
-        }
-
-        #card * {
-            min-width: 80px;
-            width: 12vw;
-            image-rendering: pixelated;
-            transform:
-                translate(-50%, 50%)
-                rotateX(var(--rotateX))
-                rotateY(var(--rotateY));
-        }
-
-    </style>
+    <title>My w5ebsite</title>
+    <link id="style" rel="stylesheet" href="css/main.css">
+    <link id="dark" rel="stylesheet" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="center">
-        <video class="bg" src="./assets/balatrobg.webm" autoplay loop muted></video>
-        <audio class="music" src="./assets/maintheme.ogg" autoplay loop></audio>
-        <img class="logo" src="./assets/balatro-logo.png">
-        <div id="card-container">
-            <div id="card">
-                <img src="./assets/tucker-joker.png">
+    <div id="pageContent">
+        <div id="navBar">
+            <a title="Home" class="navLink" href="index.html">Home</a>
+            <a title="About" class="navLink" href="about.html">About</a>
+            <a title="Guess The Hex!" class="navLink" href="guesshex.html">Guess The Hex</a>
+            <a title="Get to School 6" class="navLink" href="game/gettoschool6/gettoschool6.html">Get to School 6</a>
+            <button id="modeToggleButton">
+                <img id="modeToggleIcon" src="img/moon.svg">
+            </button>
+        </div>
+        <div id="activeContent">
+            <div class="darkGradientBackground"></div>
+            <div class="gradientBackground"></div>
+            <div class="nameCenter">
+                <h1>Tucker Murray</h1>
+                <p>My website. Use the bar at the top to explore!</p>
             </div>
-        <div>
-
+        </div>
     </div>
 </body>
-
+<script type="module" src="js/script.js"></script>
 </html>
-
-<script>
-    // This is the "Getting it to follow our mouse" part of this video https://youtu.be/Z-3tPXf9a7M?si=YcxWEcuWAiNjqCmD
-    const container = document.getElementById("card-container");
-    const card = document.getElementById("card");
-
-    container.addEventListener("mousemove", (e) => {
-        rotateElement(e, card);
-    });
-
-    container.addEventListener("mouseout", () => {
-        card.style.setProperty("--rotateX", "0deg");
-        card.style.setProperty("--rotateY", "0deg");
-    });
-
-    function rotateElement(event, element) {
-        //get mouse position
-        const x = event.clientX;
-        const y = event.clientY;
-
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-
-        const offsetX = ((x - centerX)  / centerX) * 80;
-        const offsetY = ((y- centerY) / centerY) * 50;
-
-        element.style.setProperty("--rotateX", offsetY * -1 + "deg");
-        element.style.setProperty("--rotateY", offsetX + "deg");
-
-    }
-</script>

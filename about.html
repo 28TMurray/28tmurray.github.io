@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My w5ebsite</title>
+    <link id="style" rel="stylesheet" href="css/main.css">
+    <link id="style" rel="stylesheet" href="css/about.css">
+    <link id="dark" rel="stylesheet" href="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!--code block highlighting-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+    <div id="pageContent">
+        <div id="navBar">
+            <a title="Home" class="navLink" href="index.html">Home</a>
+            <a title="About" class="navLink" href="about.html">About</a>
+            <a title="Guess The Hex!" class="navLink" href="guesshex.html">Guess The Hex</a>
+            <a title="Get to School 6" class="navLink" href="game/gettoschool6/gettoschool6.html">Get to School 6</a>
+            <button id="modeToggleButton">
+                <img id="modeToggleIcon" src="img/moon.svg">
+            </button>
+        </div>
+        <div id="activeContent">
+            <div id="aboutContainer">
+                <h1 class="cc mainHeading">Me! (Tucker Murray)</h1>
+                <p class="cc contentText indent">
+                    I've had a fascination with computers for quite a while, and it's led to me
+                    spending a lot of time and money to best make it mine. I can recall many hours of 2022 were spent
+                    researching and saving my birthday and Christmas money to build my own PC (along with reorganizing
+                    my room and getting peripherals). End of 2023, I stuck two 4TB hard drives into an old, used
+                    workstation and made it my NAS. I switched to Linux as my main OS for good shortly after (currently
+                    using <a href="https://pop.system76.com/" target="_blank"><img class="picon"
+                            src="img/icons/popos.webp"></a> with plans to experiment).
+                    And now I'm here at this school, to continue learning about this stuff.
+                </p>
+                <h2 class="cc subheading">Programming Projects</h2>
+                <div class="indent programWidget">
+                    <div class="imageTextContainer">
+                        <img src="img/icons/python.svg" alt="python icon">
+                        <a href="programming-projects/server-randomizer.py" target="_blank">server-randomizer.py ↗</a>
+                    </div>
+                    <span class="widgetContent">
+                        <h1 class="cco">Server Randomizer</h1>
+                        <p class="cco">This is the first and simplest of the Discord bots I made as a joke/experiment
+                            that would be run for a week and then the server would go back to normal. It randomizes
+                            color roles, channel names, and shuffles all of the members' nicks</p>
+                    </span>
+                </div>
+                <div class="indent programWidget">
+                    <div class="imageTextContainer">
+                        <img src="img/icons/python.svg" alt="python icon">
+                        <a href="programming-projects/tierlist.py" target="_blank">tierlist.py ↗</a>
+                    </div>
+                    <span class="widgetContent">
+                        <h1 class="cco">Tierlist</h1>
+                        <p class="cco">The second Discord bot, and it had by far had the longest run. I am constantly
+                            amazed how this one managed to work consistently given how dense with awful decisions it is.
+                            A random message will get reacted with S-F by the bot, and everytime someone reacts it
+                            writes out to a csv file containing a lot of info including how many of each reaction the
+                            message has.<br><br>
+                            Commands:
+                        <ul class="cco">
+                            <li>!exempt, !unexempt - the bot won't tierlist your message and vice-versa.</li>
+                            <li>!rm - if you reply to your own message with !rm, the bot removes the reactions and
+                                removes it from the csv file.</li>
+                            <li>!histogram - written by a friend. Sends an image of a histogram. Use on its own for all
+                                messages, or reply to a specific message to see the histogram for the one message.</li>
+                        </ul>
+                        </p>
+                    </span>
+                </div>
+                <div class="indent programWidget">
+                    <div class="imageTextContainer">
+                        <img src="img/icons/python.svg" alt="python icon">
+                        <a href="programming-projects/anyboard.py" target="_blank">anyboard.py ↗</a>
+                    </div>
+                    <span class="widgetContent">
+                        <h1 class="cco">Anyboard</h1>
+                        <p class="cco">The best of my Discord bots. This one works like a normal starboard, but it
+                            automatically creates new boards for any emoji, including custom, with the board messages
+                            all having nice embeds and handling for attachments. Uses a json file to store and
+                            load.<br><br>
+                            Commands:
+                        <ul class="cco">
+                            <li>!exempt, !unexempt - the bot won't board your message and vice-versa.</li>
+                            <li>!rm - if you reply to your own message with !rm, the bot deletes it from any boards it
+                                is in and removes it from the json.</li>
+                        </ul>
+                        </p>
+                    </span>
+                </div>
+
+                <h2 class="cc subheading">Music Recommendations</h2>
+                <p class="cc contentText indent">
+                    Art is very important to me, and music is my favorite artform. Here is some music I think is
+                    escpecially remarkable (no particular order except the first one).
+                </p>
+                <div class="imageLinksContainer">
+                    <div class="imageLinkContainer">
+                        <a title="Techdog 1-7" class="imageLink"
+                            href="https://patriciataxxon.bandcamp.com/album/techdog-1-7" target="_blank"><img
+                                src="img/music-covers/techdog1-7.png"></a>
+                        <p class="cco contentText">Techdog 1-7</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="LONG SEASON" class="imageLink" href="https://youtu.be/GwWv-T4rM0k"
+                            target="_blank"><img src="img/music-covers/longseason.jpg"></a>
+                        <p class="cco contentText">LONG SEASON</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="The New Sound" class="imageLink"
+                            href="https://geordiegreep.bandcamp.com/album/the-new-sound" target="_blank"><img
+                                src="img/music-covers/thenewsound.jpg"></a>
+                        <p class="cco contentText">The New Sound</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="flood" class="imageLink" href="https://youtu.be/3AwDfKFfn18?si=0wRpTSt_8r386y2L"
+                            target="_blank"><img src="img/music-covers/flood.jpg"></a>
+                        <p class="cco contentText">flood</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="Lightning Bolt" class="imageLink"
+                            href="https://lightningbolt.bandcamp.com/album/lightning-bolt" target="_blank"><img
+                                src="img/music-covers/lightningbolt.jpg"></a>
+                        <p class="cco contentText">Lightning Bolt</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="Phantasmagoria III" class="imageLink" href="https://youtu.be/6BeWMUMzInI"
+                            target="_blank"><img src="img/music-covers/phantasmagoriaiii.jpg"></a>
+                        <p class="cco contentText">Phantasmagoria III</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="The Money Store" class="imageLink"
+                            href="https://thirdworlds.net/files/index.php?The%20Money%20Store" target="_blank"><img
+                                src="img/music-covers/moneystore.jpg"></a>
+                        <p class="cco contentText">The Money Store</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="Eclipse" class="imageLink"
+                            href="https://masayukitakayanagi.bandcamp.com/album/eclipse" target="_blank"><img
+                                src="img/music-covers/eclipse.jpg"></a>
+                        <p class="cco contentText">Eclipse</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="The Inner Mounting Flame" class="imageLink"
+                            href="https://www.youtube.com/watch?v=c_pxfXDvCxA&list=OLAK5uy_mgq7cJhffMAjjMitVAzluiX8_CZKJzWEU"
+                            target="_blank"><img src="img/music-covers/innermountingflame.jpg"></a>
+                        <p class="cco contentText">The Inner Mounting Flame</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="After the Night" class="imageLink"
+                            href="https://parannoul.bandcamp.com/album/after-the-night" target="_blank"><img
+                                src="img/music-covers/afterthenight.png"></a>
+                        <p class="cco contentText">After the Night</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="Everywhere at the End of Time" class="imageLink"
+                            href="https://thecaretaker.bandcamp.com/album/everywhere-at-the-end-of-time"
+                            target="_blank"><img src="img/music-covers/eateot.jpg"></a>
+                        <p class="cco contentText">Everywhere at the End of Time</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="Tell Me About The Long Dark Path Home" class="imageLink"
+                            href="https://wearebusybodies.bandcamp.com/album/newfound-interest-in-connecticut-tell-me-about-the-long-dark-path-home"
+                            target="_blank"><img src="img/music-covers/niic.jpg"></a>
+                        <p class="cco contentText">Tell Me About The Long Dark Path Home</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="Phantomsmasher" class="imageLink"
+                            href="https://phantomsmasher.bandcamp.com/album/phantomsmasher" target="_blank"><img
+                                src="img/music-covers/phantomsmasher.jpg"></a>
+                        <p class="cco contentText">Phantomsmasher</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="Pinkerton" class="imageLink"
+                            href="https://www.youtube.com/watch?v=THDc2MAMwok&list=OLAK5uy_mEo-LLncm4GSVaKFiTq5JP8wA7vMucyNw"
+                            target="_blank"><img src="img/music-covers/pinkerton.jpg"></a>
+                        <p class="cco contentText">Pinkerton</p>
+                    </div>
+                    <div class="imageLinkContainer">
+                        <a title="Any of the Leroy Dariacore albums" class="imageLink"
+                            href="https://soundcloud.com/c0ncernn" target="_blank"><img
+                                src="img/music-covers/dariacore2.jpg"></a>
+                        <p class="cco contentText">Any of the Leroy Dariacore albums</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module" src="js/script.js"></script>
+<script type="module" src="js/about.js"></script>
+
+</html>

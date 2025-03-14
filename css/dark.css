@@ -1,0 +1,39 @@
+.navLink, .navLink:visited {
+    border: 2px solid #ddd;
+    color: #fff;
+    -webkit-text-stroke: 4px #333;
+    background-color: #333;
+}
+.navLink:hover {
+    border-color: #fff;
+    background-color: #88d;
+}
+#navBar {
+    background-color: rgb(211, 157, 21);
+    border-color: #fff;
+}
+body {
+    background-color: #333;
+}
+
+#activeContent {
+    background-color: #440e81;
+}
+
+#modeToggleButton {
+    filter: invert(100%);
+}
+
+.nameCenter h1, .nameCenter p {
+    text-shadow: 0 0 0.2em #212;
+}
+
+.gradientBackground {
+    opacity: 0;
+}
+
+.cc {
+    color: #fff;
+    paint-order: stroke fill;
+    -webkit-text-stroke: 0.2em #000;
+}

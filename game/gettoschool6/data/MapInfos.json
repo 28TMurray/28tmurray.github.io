@@ -1,0 +1,17 @@
+[
+null,
+{"id":1,"expanded":true,"name":"outside","order":1,"parentId":0,"scrollX":712,"scrollY":391.3333333333333},
+{"id":2,"expanded":true,"name":"inside_house","order":2,"parentId":1,"scrollX":915.4285714285713,"scrollY":503.1428571428571,"quick":false},
+{"id":3,"expanded":false,"name":"basement","order":3,"parentId":2,"scrollX":712,"scrollY":391.3333333333333,"quick":false},
+{"id":4,"expanded":true,"name":"summoning_room","order":4,"parentId":3,"scrollX":712,"scrollY":391.3333333333333,"quick":false},
+{"id":5,"expanded":false,"name":"boss","order":5,"parentId":4,"scrollX":920,"scrollY":391.3333333333333,"quick":false},
+{"id":6,"expanded":true,"name":"boulder_pass","order":6,"parentId":0,"scrollX":712,"scrollY":391.3333333333333,"quick":false},
+{"id":7,"expanded":false,"name":"dungeon","order":7,"parentId":6,"scrollX":2216,"scrollY":1710,"quick":false},
+{"id":8,"expanded":false,"name":"forest_pass","order":8,"parentId":0,"scrollX":712,"scrollY":391.3333333333333,"quick":false},
+{"id":9,"expanded":false,"name":"test","order":9,"parentId":0,"scrollX":712,"scrollY":391.3333333333333,"quick":false},
+{"id":10,"expanded":false,"name":"test2","order":10,"parentId":0,"scrollX":816,"scrollY":624,"quick":false},
+{"id":11,"expanded":false,"name":"atown","order":11,"parentId":0,"scrollX":1204,"scrollY":466,"quick":false},
+{"id":12,"expanded":true,"name":"weapon_shop","order":14,"parentId":11,"scrollX":648.8,"scrollY":359.6,"quick":false},
+{"id":13,"expanded":false,"name":"bank","order":12,"parentId":11,"scrollX":534,"scrollY":322.5,"quick":false},
+{"id":14,"expanded":false,"name":"armor_shop","order":13,"parentId":11,"scrollX":648.8,"scrollY":359.6,"quick":false}
+]
